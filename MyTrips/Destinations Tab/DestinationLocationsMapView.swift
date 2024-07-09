@@ -13,8 +13,22 @@ import SwiftUI
 import MapKit
 
 struct DestinationLocationsMapView: View {
+    @State private var cameraPosition: MapCameraPosition = .automatic
     var body: some View {
-        Map()
+        Map(position: $cameraPosition) {
+            Marker("Moulin Trouge", coordinate: CLLocationCoordinate2D(latitude: 48.884134, longitude: 2.332196))
+        }
+            .onAppear {
+                // 48.856788, 2.351077
+                let paris = CLLocationCoordinate2D(
+                    latitude: 48.856788,
+                    longitude:  2.351077)
+                let parisSpan = MKCoordinateSpan(
+                    latitudeDelta: 0.15,
+                    longitudeDelta: 0.15)
+                let parisRegion = MKCoordinateRegion(center: paris, span: parisSpan)
+                cameraPosition = .region(parisRegion)
+            }
     }
 }
 
