@@ -23,6 +23,7 @@ struct DestinationLocationsMapView: View {
     private var listPlacemarks: [MTPlacemark] {
         searchPlacemarks + destination.placemarks
     }
+    @State private var selectedPlacemark: MTPlacemark?
     
     var destination: Destination
     
@@ -53,17 +54,23 @@ struct DestinationLocationsMapView: View {
             }
         }
         .padding(.horizontal)
-        Map(position: $cameraPosition) {
+        Map(position: $cameraPosition, selection: $selectedPlacemark) {
                 ForEach(listPlacemarks) { placemark in
-                    if placemark.destination != nil {
-                        Marker(coordinate: placemark.coordinate) {
-                            Label(placemark.name, systemImage: "star")
+                    Group {
+                        if placemark.destination != nil {
+                            Marker(coordinate: placemark.coordinate) {
+                                Label(placemark.name, systemImage: "star")
+                            }
+                            .tint(.yellow)
+                        } else {
+                            Marker(placemark.name, coordinate: placemark.coordinate)
                         }
-                        .tint(.yellow)
-                    } else {
-                        Marker(placemark.name, coordinate: placemark.coordinate)
-                    }
+                    }.tag(placemark)
                 }
+        }
+        .sheet(item: $selectedPlacemark) { selectedPlacemark in
+            Text(selectedPlacemark.name)
+                .presentationDetents([.height(450)])
         }
         .safeAreaInset(edge: .bottom) {
             HStack {
