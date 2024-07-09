@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A25DF8F2C3D1034004632F8 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A25DF8E2C3D1034004632F8 /* MapManager.swift */; };
+		2A25DF922C3DD78B004632F8 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A25DF912C3DD78B004632F8 /* LocationDetailView.swift */; };
 		2A2B11952C3CBCA6000E4233 /* SampleParisLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2B11942C3CBCA6000E4233 /* SampleParisLocations.swift */; };
 		2A37D9802C3CD07F00A0F253 /* DestinationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D97F2C3CD07F00A0F253 /* DestinationsListView.swift */; };
 		2A8468082C3CC4DC00AAC82B /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8468072C3CC4DC00AAC82B /* Destination.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		2A25DF8E2C3D1034004632F8 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
+		2A25DF912C3DD78B004632F8 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		2A2B11942C3CBCA6000E4233 /* SampleParisLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleParisLocations.swift; sourceTree = "<group>"; };
 		2A37D97F2C3CD07F00A0F253 /* DestinationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsListView.swift; sourceTree = "<group>"; };
 		2A8468072C3CC4DC00AAC82B /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
@@ -56,6 +58,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		2A25DF902C3DD760004632F8 /* Shared Views */ = {
+			isa = PBXGroup;
+			children = (
+				2A25DF912C3DD78B004632F8 /* LocationDetailView.swift */,
+			);
+			path = "Shared Views";
+			sourceTree = "<group>";
+		};
 		2A8468062C3CC4B700AAC82B /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +94,7 @@
 		BB9432C72B41D633007BAAC6 /* MyTrips */ = {
 			isa = PBXGroup;
 			children = (
+				2A25DF902C3DD760004632F8 /* Shared Views */,
 				2A25DF8D2C3D101B004632F8 /* Services */,
 				2A8468062C3CC4B700AAC82B /* Models */,
 				BB9432C82B41D633007BAAC6 /* MyTripsApp.swift */,
@@ -202,6 +213,7 @@
 				BB9432DB2B41D76F007BAAC6 /* DestinationLocationsMapView.swift in Sources */,
 				2A84680A2C3CC6AF00AAC82B /* MTPlacemark.swift in Sources */,
 				BB9432C92B41D633007BAAC6 /* MyTripsApp.swift in Sources */,
+				2A25DF922C3DD78B004632F8 /* LocationDetailView.swift in Sources */,
 				BB9432D92B41D747007BAAC6 /* TripMapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
