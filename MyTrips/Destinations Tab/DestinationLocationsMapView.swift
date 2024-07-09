@@ -91,6 +91,7 @@ struct DestinationLocationsMapView: View {
                                 visibleRegion: visibleRegion
                             )
                             searchText = ""
+                            cameraPosition = .automatic
                         }
                     }
                 if !searchPlacemarks.isEmpty {
