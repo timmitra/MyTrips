@@ -10,10 +10,11 @@
 
 
 import SwiftUI
+import MapKit
 
 struct DestinationLocationsMapView: View {
     var body: some View {
-        Text("Destination Locations Map!")
+        Map()
     }
 }
 
