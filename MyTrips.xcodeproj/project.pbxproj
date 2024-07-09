@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A2B11952C3CBCA6000E4233 /* SampleParisLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2B11942C3CBCA6000E4233 /* SampleParisLocations.swift */; };
+		2A37D9802C3CD07F00A0F253 /* DestinationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D97F2C3CD07F00A0F253 /* DestinationsListView.swift */; };
 		2A8468082C3CC4DC00AAC82B /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8468072C3CC4DC00AAC82B /* Destination.swift */; };
 		2A84680A2C3CC6AF00AAC82B /* MTPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8468092C3CC6AF00AAC82B /* MTPlacemark.swift */; };
 		BB9432C92B41D633007BAAC6 /* MyTripsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9432C82B41D633007BAAC6 /* MyTripsApp.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		2A2B11942C3CBCA6000E4233 /* SampleParisLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleParisLocations.swift; sourceTree = "<group>"; };
+		2A37D97F2C3CD07F00A0F253 /* DestinationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsListView.swift; sourceTree = "<group>"; };
 		2A8468072C3CC4DC00AAC82B /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		2A8468092C3CC6AF00AAC82B /* MTPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTPlacemark.swift; sourceTree = "<group>"; };
 		BB9432C52B41D633007BAAC6 /* MyTrips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTrips.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 			children = (
 				BB9432DA2B41D76F007BAAC6 /* DestinationLocationsMapView.swift */,
 				2A2B11942C3CBCA6000E4233 /* SampleParisLocations.swift */,
+				2A37D97F2C3CD07F00A0F253 /* DestinationsListView.swift */,
 			);
 			path = "Destinations Tab";
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB9432CB2B41D633007BAAC6 /* StartTab.swift in Sources */,
+				2A37D9802C3CD07F00A0F253 /* DestinationsListView.swift in Sources */,
 				2A2B11952C3CBCA6000E4233 /* SampleParisLocations.swift in Sources */,
 				2A8468082C3CC4DC00AAC82B /* Destination.swift in Sources */,
 				BB9432DB2B41D76F007BAAC6 /* DestinationLocationsMapView.swift in Sources */,
