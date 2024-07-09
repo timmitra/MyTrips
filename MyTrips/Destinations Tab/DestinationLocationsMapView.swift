@@ -14,7 +14,7 @@ import MapKit
 
 struct DestinationLocationsMapView: View {
     @State private var cameraPosition: MapCameraPosition = .automatic
-    @State private var visibleRegion: MKCoordinateRegion
+    @State private var visibleRegion: MKCoordinateRegion?
     var body: some View {
         Map(position: $cameraPosition) {
             Marker("Moulin Trouge", coordinate:.moulinRouge)
