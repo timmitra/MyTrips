@@ -60,12 +60,6 @@ extension Destination {
                 isStoredInMemoryOnly: true
             )
         )
-//        let paris = CLLocationCoordinate2D(
-//            latitude: 48.856788,
-//            longitude:  2.351077)
-//        let parisSpan = MKCoordinateSpan(
-//            latitudeDelta: 2.351077,
-//            longitudeDelta: 0.15)
         let paris = Destination(
             name: "Paris",
             latitude: 48.856788,
