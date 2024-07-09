@@ -10,11 +10,7 @@ import SwiftData
 
 enum MapManager {
     @MainActor
-    static func searchPlaces(
-        _ modelContext: ModelContext,
-        searchText: String,
-        visibleRegion: MKCoordinateRegion?
-    ) async {
+    static func searchPlaces(_ modelContext: ModelContext, searchText: String, visibleRegion: MKCoordinateRegion?) async {
         removeSearchResults(modelContext)
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchText
