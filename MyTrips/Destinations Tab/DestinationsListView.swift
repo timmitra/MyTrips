@@ -30,6 +30,13 @@ struct DestinationsListView: View {
                                     .foregroundStyle(.secondary)
                             }
                         }
+                        .swipeActions(edge: .trailing) {
+                            Button(role: .destructive) {
+                                modelContext.delete(destination)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
                     }
                 } else {
                     ContentUnavailableView(
