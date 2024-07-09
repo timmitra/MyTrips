@@ -15,6 +15,7 @@ struct LocationDetailView: View {
     var selectedPlacemark: MTPlacemark?
     @State private var name = ""
     @State private var address = ""
+    @State private var lookaroundScene: MKLookAroundScene?
     
     var isChanged: Bool {
         guard let selectedPlacemark else { return false }
@@ -49,6 +50,13 @@ struct LocationDetailView: View {
                         .foregroundStyle(.gray)
                 }
             }
+            if let lookaroundScene {
+                LookAroundPreview(initialScene: lookaroundScene)
+                    .frame(height: 200)
+                    .padding()
+            } else {
+                ContentUnavailableView("No preview available", systemImage: "eye.slash")
+            }
             HStack {
                 Spacer()
                 if let destination {
@@ -73,12 +81,22 @@ struct LocationDetailView: View {
             Spacer()
         }
         .padding()
+        .task(id: selectedPlacemark) {
+            await fetchLookaroundPreview()
+        }
         .onAppear {
-                if let selectedPlacemark, destination != nil {
-                    name = selectedPlacemark.name
-                    address = selectedPlacemark.address
-                }
+            if let selectedPlacemark, destination != nil {
+                name = selectedPlacemark.name
+                address = selectedPlacemark.address
             }
+        }
+    }
+    func fetchLookaroundPreview() async {
+        if let selectedPlacemark {
+            lookaroundScene = nil
+            let lookaroundRequest = MKLookAroundSceneRequest(coordinate: selectedPlacemark.coordinate)
+            lookaroundScene = try? await lookaroundRequest.scene
+        }
     }
 }
 
