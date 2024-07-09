@@ -69,6 +69,8 @@ struct DestinationLocationsMapView: View {
             HStack {
                 TextField("Search...", text: $searchText)
                     .textFieldStyle(.roundedBorder)
+                    .autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
                     .focused($searchFieldFocus)
                     .overlay(alignment: .trailing) {
                         if searchFieldFocus {
