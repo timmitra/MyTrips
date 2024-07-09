@@ -14,11 +14,37 @@ import MapKit
 import SwiftData
 
 struct DestinationLocationsMapView: View {
+    @Environment(\.modelContext) private var modelContext
     @State private var cameraPosition: MapCameraPosition = .automatic
     @State private var visibleRegion: MKCoordinateRegion?
     var destination: Destination
     
     var body: some View {
+        @Bindable var destination = destination
+        VStack {
+            LabeledContent {
+                TextField("Enter destination name", text: $destination.name)
+                    .textFieldStyle(.roundedBorder)
+                    .foregroundStyle(.primary)
+            } label: {
+                Text("Name")
+            }
+            HStack {
+                Text("Adjust the map to set the region for your destination.")
+                Spacer()
+                Button("Set Region") {
+                    if let visibleRegion {
+                        destination.latitude = visibleRegion.center.latitude
+                        destination.longitude = visibleRegion.center.longitude
+                        destination.latitudeDelta = visibleRegion.span.latitudeDelta
+                        destination.longitudeDelta = visibleRegion.span.longitudeDelta
+
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+            }
+        }
+        .padding(.horizontal)
         Map(position: $cameraPosition) {
                 ForEach(destination.placemarks) { placemark in
                     Marker(coordinate: placemark.coordinate) {
@@ -27,6 +53,8 @@ struct DestinationLocationsMapView: View {
                     .tint(.yellow)
                 }
         }
+        .navigationTitle("Destination")
+        .navigationBarTitleDisplayMode(.inline)
         .onMapCameraChange(frequency: .onEnd) { context in
             visibleRegion = context.region
         }
@@ -39,6 +67,10 @@ struct DestinationLocationsMapView: View {
 }
 
 #Preview {
-    DestinationLocationsMapView(destination: Destination(name: "Paris"))
-        .modelContainer(Destination.preview)
+    let container = Destination.preview
+    let fetchDescriptor = FetchDescriptor<Destination>()
+    let destination = try! container.mainContext.fetch(fetchDescriptor)[0]
+    return NavigationStack {
+        DestinationLocationsMapView(destination: destination)
+    }
 }
