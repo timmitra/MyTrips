@@ -17,7 +17,7 @@ struct DestinationsListView: View {
         } else {
             ContentUnavailableView(
             "No Destinations",
-            systemImage: "globe.dark",
+            systemImage: "globe.desk",
             description: Text("You have not yet set up ant destinations yet. Tap on the \(Image(systemName: "plus.circle.fill")) button in the toolbar to begin.")
             )
         }
