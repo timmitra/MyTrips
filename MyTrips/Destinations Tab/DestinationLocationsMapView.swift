@@ -31,6 +31,7 @@ struct DestinationLocationsMapView: View {
             }
             HStack {
                 Text("Adjust the map to set the region for your destination.")
+                    .foregroundStyle(.secondary)
                 Spacer()
                 Button("Set Region") {
                     if let visibleRegion {
