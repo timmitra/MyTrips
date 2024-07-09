@@ -69,7 +69,9 @@ struct DestinationLocationsMapView: View {
                 }
         }
         .sheet(item: $selectedPlacemark) { selectedPlacemark in
-            Text(selectedPlacemark.name)
+            LocationDetailView(
+            destination: destination,
+            selectedPlacemark: selectedPlacemark)
                 .presentationDetents([.height(450)])
         }
         .safeAreaInset(edge: .bottom) {
