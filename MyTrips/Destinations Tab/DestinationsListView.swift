@@ -9,7 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct DestinationsListView: View {
+    @Environment(\.modelContext) private var modelContext
     @Query(sort: \Destination.name) private var destinations: [Destination]
+    @State private var newDestination = false
+    @State private var destinationName = ""
     
     var body: some View {
         NavigationStack {
@@ -39,10 +42,23 @@ struct DestinationsListView: View {
             .navigationTitle("My Destinations")
             .toolbar {
                 Button {
-                    
+                    newDestination.toggle()
                 } label: {
                     Image(systemName: "plus.circle.fill")
                 }
+                    .alert("Enter Destination Name", isPresented: $newDestination) {
+                        TextField("Enter destination name", text: $destinationName)
+                        Button("Ok") {
+                            if !destinationName.isEmpty {
+                                let destination = Destination(name: destinationName)
+                                modelContext.insert(destination)
+                                destinationName = ""
+                            }
+                        }
+                        Button("Cancel", role: .cancel) {}
+                    } message: {
+                        Text("Create a new destination.")
+                    }
             }
         }
     }
