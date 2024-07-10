@@ -54,7 +54,8 @@ struct DestinationLocationsMapView: View {
             }
         }
         .padding(.horizontal)
-        Map(position: $cameraPosition, selection: $selectedPlacemark) {
+        MapReader { proxy in
+            Map(position: $cameraPosition, selection: $selectedPlacemark) {
                 ForEach(listPlacemarks) { placemark in
                     Group {
                         if placemark.destination != nil {
@@ -67,6 +68,18 @@ struct DestinationLocationsMapView: View {
                         }
                     }.tag(placemark)
                 }
+            }
+            .onTapGesture { position in
+                if  let coordinate = proxy.convert(position, from: .local) {
+                    let mtPlacemark = MTPlacemark(
+                        name: "",
+                        address: "",
+                        latitude: coordinate.latitude,
+                        longitude: coordinate.longitude
+                    )
+                    modelContext.insert(mtPlacemark)
+                }
+            }
         }
         .sheet(item: $selectedPlacemark) { selectedPlacemark in
             LocationDetailView(
