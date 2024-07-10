@@ -195,7 +195,7 @@ struct DestinationLocationsMapView: View {
             latitudeDelta: 0.15,
             longitudeDelta: 0.15
         )
-        var placemarks: [MTPlacemark] = [
+        let placemarks: [MTPlacemark] = [
             MTPlacemark(
                 name: "Louvre Museum",
                 address: "93 Rue de Rivoli, 75001, Paris, France",
