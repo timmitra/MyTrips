@@ -26,18 +26,30 @@ struct LocationDetailView: View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
-                    TextField("Name", text: $name)
-                        .font(.title)
-                    TextField("address", text: $address, axis: .vertical)
-                    if isChanged {
-                        Button("Update") {
-                            selectedPlacemark?.name = name
-                                .trimmingCharacters(in: .whitespacesAndNewlines)
-                            selectedPlacemark?.address = address
-                                .trimmingCharacters(in: .whitespacesAndNewlines)
+                    if destination != nil {
+                        TextField("Name", text: $name)
+                            .font(.title)
+                        TextField("address", text: $address, axis: .vertical)
+                        if isChanged {
+                            Button("Update") {
+                                selectedPlacemark?.name = name
+                                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                                selectedPlacemark?.address = address
+                                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .buttonStyle(.borderedProminent)
                         }
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .buttonStyle(.borderedProminent)
+                    } else {
+                        Text(selectedPlacemark?.name ?? "")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                        Text(selectedPlacemark?.address ?? "")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(2)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.trailing)
                     }
                 }
                 .textFieldStyle(.roundedBorder)
