@@ -89,6 +89,23 @@ struct LocationDetailView: View {
                     .buttonStyle(.borderedProminent)
                     .tint(inList ? .red : .green)
                     .disabled(name.isEmpty || isChanged)
+                } else {
+                    HStack {
+                        Button("Open in maps", systemImage: "map") {
+                            if let selectedPlacemark {
+                                let placemark = MKPlacemark(coordinate: selectedPlacemark.coordinate)
+                                let mapItem = MKMapItem(placemark: placemark)
+                                mapItem.name = selectedPlacemark.name
+                                mapItem.openInMaps()
+                            }
+                        }
+                        .fixedSize(horizontal: true, vertical: false)
+                        Button("Show Route", systemImage: "location.north") {
+                            
+                        }
+                        .fixedSize(horizontal: true, vertical: false)
+                    }
+                    .buttonStyle(.bordered)
                 }
             }
             Spacer()
@@ -113,7 +130,7 @@ struct LocationDetailView: View {
     }
 }
 
-#Preview {
+#Preview("Destination Tab") {
     do {
         let container = try ModelContainer(for:Destination.self)
         let paris = Destination(
@@ -135,3 +152,20 @@ struct LocationDetailView: View {
         fatalError("Fatal Error: Could not create ModelContainer. Error: \(error)")
     }
 }
+
+#Preview("TripMap Tab") {
+    do {
+        let container = try ModelContainer(for:Destination.self)
+        let selectedPlacemark: MTPlacemark =
+            MTPlacemark(
+                name: "Louvre Museum",
+                address: "93 Rue de Rivoli, 75001, Paris, France",
+                latitude: 48.861950,
+                longitude: 2.336902
+            )
+        return LocationDetailView(selectedPlacemark: selectedPlacemark)
+    } catch {
+        fatalError("Fatal Error: Could not create ModelContainer. Error: \(error)")
+    }
+}
+
