@@ -43,6 +43,10 @@ struct TripMapView: View {
                 }.tag(placemark)
             }
         }
+        .sheet(item: $selectedPlacemark) { selectedPlacemark in
+            LocationDetailView(selectedPlacemark: selectedPlacemark)
+                .presentationDetents([.height(450)])
+        }
         .onMapCameraChange { context in
             visibleRegion = context.region
         }
