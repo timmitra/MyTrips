@@ -13,6 +13,7 @@ struct LocationDetailView: View {
     @Environment(\.dismiss) private var dismiss
     var destination: Destination?
     var selectedPlacemark: MTPlacemark?
+    @Binding var showRoute: Bool
     @State private var name = ""
     @State private var address = ""
     @State private var lookaroundScene: MKLookAroundScene?
@@ -101,7 +102,7 @@ struct LocationDetailView: View {
                         }
                         .fixedSize(horizontal: true, vertical: false)
                         Button("Show Route", systemImage: "location.north") {
-                            
+                            showRoute.toggle()
                         }
                         .fixedSize(horizontal: true, vertical: false)
                     }
@@ -147,7 +148,10 @@ struct LocationDetailView: View {
                 latitude: 48.861950,
                 longitude: 2.336902
             )
-        return LocationDetailView(destination: paris, selectedPlacemark: placemark)
+        return LocationDetailView(
+            destination: paris,
+            selectedPlacemark: placemark,
+            showRoute: .constant(false))
     } catch {
         fatalError("Fatal Error: Could not create ModelContainer. Error: \(error)")
     }
@@ -163,7 +167,9 @@ struct LocationDetailView: View {
                 latitude: 48.861950,
                 longitude: 2.336902
             )
-        return LocationDetailView(selectedPlacemark: selectedPlacemark)
+        return LocationDetailView(
+            selectedPlacemark: selectedPlacemark,
+            showRoute: .constant(false))
     } catch {
         fatalError("Fatal Error: Could not create ModelContainer. Error: \(error)")
     }

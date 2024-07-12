@@ -103,7 +103,9 @@ struct DestinationLocationsMapView: View {
         }) { selectedPlacemark in
             LocationDetailView(
             destination: destination,
-            selectedPlacemark: selectedPlacemark)
+            selectedPlacemark: selectedPlacemark,
+            showRoute: .constant(false) // not showing a route here
+             )
                 .presentationDetents([.height(450)])
         }
         .safeAreaInset(edge: .bottom) {
