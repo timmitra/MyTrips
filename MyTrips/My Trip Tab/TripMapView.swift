@@ -65,13 +65,16 @@ struct TripMapView: View {
         .sheet(item: $selectedPlacemark) { selectedPlacemark in
             LocationDetailView(
                 selectedPlacemark: selectedPlacemark,
-                showRoute: $showRoute)
+                showRoute: $showRoute,
+                travelInterval: $travelInterval,
+                transportType: $transportType)
                 .presentationDetents([.height(450)])
         }
         .onMapCameraChange { context in
             visibleRegion = context.region
         }
         .onAppear{
+            MapManager.removeSearchResults(modelContext)
             updateCameraPosition()
         }
         .mapControls{
@@ -95,6 +98,9 @@ struct TripMapView: View {
                     }
                 }
             }
+        }
+        .task(id: transportType) {
+            await fetchRoute()
         }
         .safeAreaInset(edge: .bottom) {
             HStack {

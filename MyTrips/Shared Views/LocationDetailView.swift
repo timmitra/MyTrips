@@ -17,10 +17,20 @@ struct LocationDetailView: View {
     @State private var name = ""
     @State private var address = ""
     @State private var lookaroundScene: MKLookAroundScene?
+    @Binding var travelInterval: TimeInterval?
+    @Binding var transportType: MKDirectionsTransportType
     
     var isChanged: Bool {
         guard let selectedPlacemark else { return false }
         return (name != selectedPlacemark.name || address != selectedPlacemark.address)
+    }
+    
+    var travelTime: String? {
+        guard let travelInterval else { return nil }
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .abbreviated
+        formatter.allowedUnits = [.hour, .minute]
+        return formatter.string(from: travelInterval)
     }
     
     var body: some View {
@@ -51,6 +61,31 @@ struct LocationDetailView: View {
                             .lineLimit(2)
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.trailing)
+                    }
+                    if destination == nil {
+                        HStack {
+                            Button {
+                                transportType = .automobile
+                            } label: {
+                                Image(systemName: "car")
+                                    .symbolVariant(transportType == .automobile ? .circle : .none)
+                                    .imageScale(.large)
+                            }
+                            Button {
+                                transportType = .walking
+                            } label: {
+                                Image(systemName: "figure.walk")
+                                    .symbolVariant(transportType == .walking ? .circle : .none)
+                                    .imageScale(.large)
+                            }
+                            if let travelTime {
+                                let prefix = transportType == .automobile ? "Driving" : "Walking"
+                                Text("\(prefix) time: \(travelTime)")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+
+                        }
                     }
                 }
                 .textFieldStyle(.roundedBorder)
@@ -151,7 +186,9 @@ struct LocationDetailView: View {
         return LocationDetailView(
             destination: paris,
             selectedPlacemark: placemark,
-            showRoute: .constant(false))
+            showRoute: .constant(false),
+            travelInterval: .constant(nil),
+            transportType: .constant(.automobile))
     } catch {
         fatalError("Fatal Error: Could not create ModelContainer. Error: \(error)")
     }
@@ -169,7 +206,9 @@ struct LocationDetailView: View {
             )
         return LocationDetailView(
             selectedPlacemark: selectedPlacemark,
-            showRoute: .constant(false))
+            showRoute: .constant(false),
+            travelInterval: .constant(TimeInterval(1000)),
+            transportType: .constant(.automobile))
     } catch {
         fatalError("Fatal Error: Could not create ModelContainer. Error: \(error)")
     }

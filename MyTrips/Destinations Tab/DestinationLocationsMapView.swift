@@ -105,6 +105,8 @@ struct DestinationLocationsMapView: View {
             destination: destination,
             selectedPlacemark: selectedPlacemark,
             showRoute: .constant(false) // not showing a route here
+            , travelInterval: .constant(nil),
+            transportType: .constant(.automobile)
              )
                 .presentationDetents([.height(450)])
         }
