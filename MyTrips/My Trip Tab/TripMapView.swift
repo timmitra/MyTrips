@@ -34,6 +34,7 @@ struct TripMapView: View {
     @State private var routeDestination: MKMapItem?
     @State private var travelInterval: TimeInterval?
     @State private var transportType = MKDirectionsTransportType.automobile
+    @State private var showSteps = false
     
     var body: some View {
         Map(position: $cameraPosition, selection: $selectedPlacemark) {
@@ -132,11 +133,43 @@ struct TripMapView: View {
                             }
                         }
                     if routeDisplaying {
-                        Button("Clear Route", systemImage: "xmark.circle") {
-                            removeRoute()
+                        HStack {
+                            Button("Clear Route", systemImage: "xmark.circle") {
+                                removeRoute()
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .fixedSize(horizontal: true, vertical: false)
+                            Button("Show Steps", systemImage: "location.north") {
+                                showSteps.toggle()
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .fixedSize(horizontal: true, vertical: false)
+                            .sheet(isPresented: $showSteps) {
+                                if let route {
+                                    NavigationStack {
+                                        List {
+                                            HStack {
+                                                Image(systemName: "mappin.circle.fill")
+                                                    .foregroundStyle(.red)
+                                                Text("From my location")
+                                                Spacer()
+                                            }
+                                            ForEach(1..<route.steps.count, id: \.self) { idx in
+                                                VStack(alignment: .leading) {
+                                                    Text("\(transportType == .automobile ? "Drive" : "Walk") \(MapManager.distance(meters: route.steps[idx].distance ))")
+                                                        .bold()
+                                                    Text(" - \(route.steps[idx].instructions)")
+                                                }
+                                                
+                                            }
+                                        }
+                                         .listStyle(.plain)
+                                        .navigationTitle("Steps")
+                                        .navigationBarTitleDisplayMode(.inline)
+                                    }
+                                }
+                            }
                         }
-                        .buttonStyle(.borderedProminent)
-                        .fixedSize(horizontal: true, vertical: false)
                     }
                     
                 }
