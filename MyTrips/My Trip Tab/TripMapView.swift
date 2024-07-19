@@ -68,6 +68,7 @@ struct TripMapView: View {
                     .stroke(.blue, lineWidth: 6)
             }
         }
+        // MARK: sheet LocationDetailView()
         .sheet(item: $selectedPlacemark) { selectedPlacemark in
             LocationDetailView(
                 selectedPlacemark: selectedPlacemark,
@@ -79,10 +80,12 @@ struct TripMapView: View {
         .onMapCameraChange { context in
             visibleRegion = context.region
         }
+        // MARK: onAppear
         .onAppear{
             MapManager.removeSearchResults(modelContext)
             updateCameraPosition()
         }
+        // MARK: Map Controls
         .mapControls{
             MapScaleView()
         }
@@ -94,6 +97,7 @@ struct TripMapView: View {
                 await fetchRoute()
             }
         }
+        // MARK: onChange of showRoute
         .onChange(of: showRoute) {
             selectedPlacemark = nil
             if showRoute {
@@ -108,6 +112,7 @@ struct TripMapView: View {
         .task(id: transportType) {
             await fetchRoute()
         }
+        // MARK: search area
         .safeAreaInset(edge: .bottom) {
             HStack {
                 VStack {
@@ -179,6 +184,7 @@ struct TripMapView: View {
                     
                 }
                 .padding()
+                // MARK: map buttons
                 VStack {
                     if !searchPlacemarks.isEmpty {
                         Button {
