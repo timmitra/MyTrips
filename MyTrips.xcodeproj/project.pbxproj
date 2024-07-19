@@ -15,6 +15,8 @@
 		2A37D9802C3CD07F00A0F253 /* DestinationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A37D97F2C3CD07F00A0F253 /* DestinationsListView.swift */; };
 		2A8468082C3CC4DC00AAC82B /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8468072C3CC4DC00AAC82B /* Destination.swift */; };
 		2A84680A2C3CC6AF00AAC82B /* MTPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8468092C3CC6AF00AAC82B /* MTPlacemark.swift */; };
+		2ACFC9C52C4A1725006677D2 /* MapStyleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFC9C42C4A1725006677D2 /* MapStyleConfig.swift */; };
+		2ACFC9C92C4A1BE5006677D2 /* MapStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFC9C82C4A1BE5006677D2 /* MapStyleView.swift */; };
 		BB9432C92B41D633007BAAC6 /* MyTripsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9432C82B41D633007BAAC6 /* MyTripsApp.swift */; };
 		BB9432CB2B41D633007BAAC6 /* StartTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9432CA2B41D633007BAAC6 /* StartTab.swift */; };
 		BB9432CD2B41D635007BAAC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB9432CC2B41D635007BAAC6 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 		2A37D97F2C3CD07F00A0F253 /* DestinationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsListView.swift; sourceTree = "<group>"; };
 		2A8468072C3CC4DC00AAC82B /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		2A8468092C3CC6AF00AAC82B /* MTPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTPlacemark.swift; sourceTree = "<group>"; };
+		2ACFC9C42C4A1725006677D2 /* MapStyleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStyleConfig.swift; sourceTree = "<group>"; };
+		2ACFC9C82C4A1BE5006677D2 /* MapStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStyleView.swift; sourceTree = "<group>"; };
 		BB9432C52B41D633007BAAC6 /* MyTrips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTrips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9432C82B41D633007BAAC6 /* MyTripsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsApp.swift; sourceTree = "<group>"; };
 		BB9432CA2B41D633007BAAC6 /* StartTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTab.swift; sourceTree = "<group>"; };
@@ -81,6 +85,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		2ACFC9C32C4A1702006677D2 /* Map Style */ = {
+			isa = PBXGroup;
+			children = (
+				2ACFC9C42C4A1725006677D2 /* MapStyleConfig.swift */,
+				2ACFC9C82C4A1BE5006677D2 /* MapStyleView.swift */,
+			);
+			path = "Map Style";
+			sourceTree = "<group>";
+		};
 		BB9432BC2B41D633007BAAC6 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				BB9432D82B41D747007BAAC6 /* TripMapView.swift */,
+				2ACFC9C32C4A1702006677D2 /* Map Style */,
 			);
 			path = "My Trip Tab";
 			sourceTree = "<group>";
@@ -211,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ACFC9C52C4A1725006677D2 /* MapStyleConfig.swift in Sources */,
 				2A25DF982C3E56AC004632F8 /* LocationDeniedView.swift in Sources */,
 				BB9432CB2B41D633007BAAC6 /* StartTab.swift in Sources */,
 				2A37D9802C3CD07F00A0F253 /* DestinationsListView.swift in Sources */,
@@ -221,6 +236,7 @@
 				BB9432DB2B41D76F007BAAC6 /* DestinationLocationsMapView.swift in Sources */,
 				2A84680A2C3CC6AF00AAC82B /* MTPlacemark.swift in Sources */,
 				BB9432C92B41D633007BAAC6 /* MyTripsApp.swift in Sources */,
+				2ACFC9C92C4A1BE5006677D2 /* MapStyleView.swift in Sources */,
 				2A25DF922C3DD78B004632F8 /* LocationDetailView.swift in Sources */,
 				BB9432D92B41D747007BAAC6 /* TripMapView.swift in Sources */,
 			);
